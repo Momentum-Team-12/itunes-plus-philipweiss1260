@@ -1,0 +1,14 @@
+#profile {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+p {
+  width: 120px;
+  flex-wrap: wrap;
+}
+
+img {
+  margin-right: 50px;
+}

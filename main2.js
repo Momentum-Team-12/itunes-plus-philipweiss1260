@@ -2,13 +2,20 @@ console. log ('linked')
 
 const profileDiv = document.querySelector("#profile")
 
+const searchForm = document.querySelector("#search")
 
+searchForm.addEventListener ('submit', function(event) {
+    event.preventDefault()
 
-fetch('https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song', {
+    let userInput = document.querySelector('#userInput')
+    console.log (userInput.value)
+}
+
+fetch(`https://proxy-itunes-api.glitch.me/search?term=${userInput.value}&media=music`, {
     method: "GET",
-    headers: {},
 
 })
+
 .then (function (response){
     return response.json()
 })
@@ -33,4 +40,4 @@ fetch('https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song', {
         card.appendChild(trackNameP)
     }
 })
-
+})
