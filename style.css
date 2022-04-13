@@ -1,7 +1,8 @@
 #profile {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
+  border: 6px;
 }
 
 p {
@@ -11,4 +12,14 @@ p {
 
 img {
   margin-right: 50px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
 }

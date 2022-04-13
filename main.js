@@ -1,14 +1,31 @@
 console. log ('linked')
 
-const profileDiv = document.querySelector("#profile")
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild)
+  }
+}
 
+let profileDiv = document.querySelector("#profile")
+let searchForm = document.querySelector("#searchTerm")
+let userInput = document.querySelector('#userInput')
+// let card = document.createElement('div')
 
+searchForm.addEventListener ('submit', 
+    function(event) {
+    event.preventDefault()
+    console.log(`this is the form submit event: ${event}`)
+    // let userInput = document.querySelector('#userInput')
+    console.log (userInput.value)
 
-fetch('https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song', {
+removeAllChildNodes(profileDiv)
+
+// fetch(`https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song`, {
+fetch(`https://proxy-itunes-api.glitch.me/search?term=${userInput.value}&attribute=artistTerm`, {
     method: "GET",
-    headers: {},
 
 })
+
 .then (function (response){
     return response.json()
 })
@@ -33,4 +50,4 @@ fetch('https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song', {
         card.appendChild(trackNameP)
     }
 })
-
+})
