@@ -1,11 +1,5 @@
 console. log ('linked')
 
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild)
-  }
-}
-
 let profileDiv = document.querySelector("#profile")
 let searchForm = document.querySelector("#searchTerm")
 let userInput = document.querySelector('#userInput')
@@ -18,7 +12,6 @@ searchForm.addEventListener ('submit',
     // let userInput = document.querySelector('#userInput')
     console.log (userInput.value)
 
-removeAllChildNodes(profileDiv)
 
 // fetch(`https://proxy-itunes-api.glitch.me/lookup?id=334337&entity=song`, {
 fetch(`https://proxy-itunes-api.glitch.me/search?term=${userInput.value}&attribute=artistTerm`, {
@@ -36,18 +29,40 @@ fetch(`https://proxy-itunes-api.glitch.me/search?term=${userInput.value}&attribu
         card.classList.add("card")
         profileDiv.appendChild(card)
 
+        let collectionNameP = document.createElement('p')
+        collectionNameP.innerText = track.collectionName
+        card.appendChild(collectionNameP)
+
+        let artDirectLink = track.artworkUrl100.toString();
+        let artConvertedLink = artDirectLink.slice(0, -13) + "300x300bb.jpg";
         let cover = document.createElement('img')
-        cover.src = track.artworkUrl100
+        cover.src = artConvertedLink
         card.appendChild(cover)
 
         let artistNameP = document.createElement('p')
-        let firstArtistName = track.artistName.split(',')
-        artistNameP.innerText = firstArtistName[0]
+        // let firstArtistName = track.artistName.split(',')
+        // artistNameP.innerText = firstArtistName[0]
+        let firstArtistName = track.artistName
+        artistNameP.innerText = firstArtistName
         card.appendChild(artistNameP)
 
         let trackNameP = document.createElement('p')
-        trackNameP.innerText = track.trackName
+        trackNameP.innerText = '\"' + track.trackName + '\"'
         card.appendChild(trackNameP)
+        let audioDiv = document.createElement('audio')
+        audioDiv.src = track.previewUrl
+        audioDiv.controls = 'controls'
+        card.appendChild(audioDiv)
+
     }
 })
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild)
+  }
+}
+
+removeAllChildNodes(profileDiv)
+
 })

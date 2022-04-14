@@ -2,16 +2,36 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 6px;
+  border: 22px;
+  border-color: black;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 10px solid rgb(142, 142, 155);
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+audio {
+  width: 200px;
+  display: block;
 }
 
 p {
-  width: 120px;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  width: 200px;
 }
 
 img {
-  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 2px black;
 }
 
 h1 {
@@ -22,4 +42,10 @@ h1 {
 form {
   display: flex;
   justify-content: center;
+}
+
+div {
+  background-color: brown;
+  border: 10px;
+  border-color: black;
 }
